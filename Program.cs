@@ -29,6 +29,7 @@ namespace ENGR115V4
             string stringSix = "TimeVsDisplacement";
             string continueMessage = "Hit any key to continue";
             string doMorefunctions = "Add More Numbers Together - y = yes - anything else for no";
+            string shouldAddNewTime = "Do you want to add a new time varaible - y = yes - anything else for no";
             string exitMessage = "Invalid Input - exiting program";
             bool moreActions;
             do
@@ -81,70 +82,73 @@ namespace ENGR115V4
 
                 //display results to screen
                 Console.WriteLine("(Math.Sqrt((inputB / inputA) - (((inputC / (2 * inputA)) * (inputC / (2 * inputA)))) = {0}", resultE);
-                Console.WriteLine(continueMessage);
-                Console.ReadLine();
+                Console.WriteLine("");
+                // Console.ReadLine();
+
+                // moreActions = false; //reset moreActions
+                // Console.WriteLine(doMorefunctions);
+                // inputstring = Console.ReadLine();
+                // if (inputstring == "y" || inputstring == "y") moreActions = true;
+
+                /// SECTION 2
+
+                bool shouldContinue = true;
+
+                do
+                {
+                    string time = "Time(t)";
+                    Dictionary<string, float> inputResponse2 = new Dictionary<string, float>(); //Dictionary is used to help define each input and their title. 
+
+                    void collectData2(string message)
+                    {
+                        string response = "";
+                        Console.WriteLine(message);
+                        response = Console.ReadLine();
+
+                        if (Single.TryParse(response, out float result))
+                        {
+                            float parsedResponse = float.Parse(response);
+                            inputResponse2.Add(message, parsedResponse);
+
+                        }
+                        else
+                        {
+                            Console.WriteLine(exitMessage);
+                            Console.WriteLine(continueMessage);
+                            Console.ReadLine();
+                            System.Environment.Exit(1);
+                        }
+                    }
+
+                    collectData2(time);
+
+                    ///Solve equation for resultFit
+                    Console.WriteLine(stringSix);
+                    //resultF = ((float)(1 * Math.E * (Math.Pow((inputResponse2["DampingCoefficient"] * -1 / (2 * inputResponse2["Mass(kg)"])) * (inputResponse2["Time(t)"])))) * (Math.Cos(resultE * inputResponse2["Time(t)"])));
+
+                    float timeDisplacement = ((float)(1) * (float)(Math.Pow(Math.E, ((inputResponse["DampingCoefficient"] * -1 / (2 * inputResponse["Mass(kg)"])) * (inputResponse2["Time(t)"]))) * (Math.Cos(resultE * inputResponse2["Time(t)"]))));
+
+                    //display results to screen
+                    Console.WriteLine("(1 * Math.E(Math.Pow((-inputC/(2 * inputA)) * (inputG)))) * (Math.Cos(resutE * inputG)))={0}", timeDisplacement);
+                    Console.WriteLine("");
+                    Console.WriteLine(shouldAddNewTime);
+                    inputstring = Console.ReadLine();
+                    if (inputstring == "y")
+                    {
+                        shouldContinue = true;
+                    }
+                    else
+                    {
+                        shouldContinue = false;
+                    }
+                } while (shouldContinue);
 
                 moreActions = false; //reset moreActions
                 Console.WriteLine(doMorefunctions);
                 inputstring = Console.ReadLine();
                 if (inputstring == "y" || inputstring == "y") moreActions = true;
             } while (moreActions);
-
-
-
-
-
-
-            // TODO: ADD missing code here
-            string time = "Time(t)";
-            Dictionary<string, float> inputResponse2 = new Dictionary<string, float>(); //Dictionary is used to help define each input and their title. 
-
-            void collectData2(string message)
-            {
-                string response = "";
-                Console.WriteLine(message);
-                response = Console.ReadLine();
-
-                if (Single.TryParse(response, out float result))
-                {
-                    float parsedResponse = float.Parse(response);
-                    inputResponse2.Add(message, parsedResponse);
-
-                }
-                else
-                {
-                    Console.WriteLine(exitMessage);
-                    Console.WriteLine(continueMessage);
-                    Console.ReadLine();
-                    System.Environment.Exit(1);
-                }
-            }
-
-            collectData2(time);
-
-
-            ///Solve equation for resultF
-            Console.WriteLine(stringSix);
-            //resultF = ((float)(1 * Math.E * (Math.Pow((inputResponse2["DampingCoefficient"] * -1 / (2 * inputResponse2["Mass(kg)"])) * (inputResponse2["Time(t)"])))) * (Math.Cos(resultE * inputResponse2["Time(t)"])));
-
-            float timeDisplacement = ((float)(1) * (float)(Math.Pow(Math.E, ((inputResponse2["DampingCoefficient"] * -1 / (2 * inputResponse2["Mass(kg)"])) * (inputResponse2["Time(t)"]))) * (Math.Cos(resultE * inputResponse2["Time(t)"]))));
-
-            //display results to screen
-            //  Console.WriteLine("(1 * Math.E(Math.Pow((-inputC/(2 * inputA)) * (inputG)))) * (Math.Cos(resutE * inputG)))={0}", resultF);
-            Console.WriteLine(continueMessage);
-            Console.ReadLine();
-
-            moreActions = false; //reset moreActions
-            Console.WriteLine(doMorefunctions);
-            inputstring = Console.ReadLine();
-            if (inputstring == "y" || inputstring == "y") moreActions = true;
         }
-
-        // TODO: End of missing code here
-
-
-
-
 
         // class MathFunctions
         //     {
